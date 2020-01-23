@@ -2,12 +2,16 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors')
 const path = require('path');
+var logger = require('morgan');
+
 
 const api = require('./routes/api');
 const port = 3000;
 
+
 const app = express();
-app.use(cors())
+app.use(cors());
+app.use(logger('dev'));
 app.use(express.static(path.join(__dirname, 'dist')));
 
 app.use(bodyParser.json()); 
